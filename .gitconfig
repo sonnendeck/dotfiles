@@ -1,0 +1,83 @@
+[user]
+	;name = 
+	;email = 
+[alias]
+  # Allgemein  
+  st = status
+  ci = commit
+  br = branch
+  co = checkout
+  df = diff --color-words
+
+  # Logs
+  lg = log -p
+  gl = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+  who = shortlog -s --
+  whois = "!sh -c 'git log -i -1 --pretty=\"format:%an <%ae>\n\" --author=\"$1\"' -"
+  whatis = show -s --pretty='tformat:%h (%s, %ad)' --date=short
+
+  # Branching
+  merged-branches = branch --merged
+  show-merged-branches = branch --merged
+  show-local-branches = branch
+  show-all-branches = branch -a
+  show-remote-branches = branch -r
+  list-remotes = branch -r
+  remove-branch = branch -D
+  delete-branch = branch -D
+  branch-containing = !git branch | grep $1 --color=auto
+  brc = "!f() { git branch | grep $1 --color=auto; }; f"
+  undo-commits = "git reset --hard HEAD"
+
+  # Merging
+  edit-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; gedit `f`"
+  add-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; git add `f`"
+  cancel-merge = reset --hard HEAD
+  cogemlock="checkout Gemfile.lock"
+
+  # Stashing
+  stash-unapply = '!git stash show -p | git apply -R'
+  stash-diff = stash show -u
+  stash-remove = stash drop
+
+  # Delete
+  delete-from-remote = "push origin --delete"
+  remove-from-remote = "push origin --delete"
+  unstage='reset HEAD --'
+  unadd='reset HEAD --'
+
+  # Diff
+  changes=diff --name-status -r
+  diffstat=diff --stat -r
+
+
+  # Wichtige Funktionen
+  co = "!f() { if [ -e $1 -o $# -ne 1 ]; then echo \"./$1.\"; git checkout \"$@\"; elif $(git branch | grep -q $1); then git checkout $(git branch | grep $1 | head -n1 | sed 's/^ *//'); else git checkout $1; fi; }; f"
+  gpush = "!f() { git push ${1:-origin} `git symbolic-ref HEAD`; }; f"
+  gpull = "!f() { git pull ${1:-origin} `git symbolic-ref HEAD`; }; f"
+  pull-with-tracking-fix = "!f() { git push -u origin `git symbolic-ref HEAD 2>/dev/null | sed -e s#refs/heads/##` }; f"
+  fix-default-origin = "!f() { git branch --set-upstream `git symbolic-ref HEAD 2>/dev/null | sed -e s#refs/heads/##` origin/`git symbolic-ref HEAD 2>/dev/null | sed -e s#refs/heads/##`; }; f"
+  remove-untracked-files = !git clean -f -d
+[core]
+  editor = vim
+  whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
+[color]
+  branch = auto
+  diff = always
+  status = auto
+  ui = auto
+[color "branch"]
+  current = yellow reverse
+  local = yellow 
+  remote = green
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan
+[push]
+  default = matching
