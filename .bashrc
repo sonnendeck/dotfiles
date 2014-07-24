@@ -72,6 +72,8 @@ git_status() {
 
 # good git aware prompt
 export PS1="\[\033[1;37m\][\w]\[\033[1;36m\]\[\033[1;33m\]\$(git_prompt_info)\[\033[1;0m\] $ "
+# with user and hostname
+#export PS1="\[\033[1;31m\][\u@\h]\[\033[1;36m\] \[\033[1;33m\]\[\033[1;37m\][\w]\[\033[1;36m\]\[\033[1;33m\]\$(git_prompt_info)\[\033[1;0m\] $ "
 
 ## Old test prompts
 #export PS1="\[\033[1;34m\][\t] \[\033[1;37m\][\w] \[\033[1;33m\]\$(git_prompt_info) \[\033[1;0m\]$ "
