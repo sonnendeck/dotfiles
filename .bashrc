@@ -11,11 +11,11 @@ if [ -f .bash_aliases ]; then
 fi
 
 # Load git bash completion
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
+if [ command -v brew >/dev/null 2>&1 && {-f $(brew --prefix)/etc/bash_completion} ]; then
   . $(brew --prefix)/etc/bash_completion
 fi
 
-if [ -d $RBENV_ROOT ]; then
+if [ command -v rbenv >/dev/null 2>&1 && -d $RBENV_ROOT ]; then
   export PATH="$RBENV_ROOT/bin:$PATH"
   eval "$(rbenv init -)"
 fi
