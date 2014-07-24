@@ -94,6 +94,6 @@ alias rak='rak -i'
 ######################
 # Load local aliases #
 ######################
-if [ -f ~/.bash_aliases_local ]; then
-source ~/.bash_aliases_local
+if [ -f .bash_aliases_local ]; then
+source .bash_aliases_local
 fi

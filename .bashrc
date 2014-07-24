@@ -6,8 +6,8 @@ export HISTCONTROL=ignoredups:ignorespace
 shopt -s histappend
 
 # Add bash aliases.
-if [ -f ~/.bash_aliases ]; then
-    source ~/.bash_aliases
+if [ -f .bash_aliases ]; then
+    source .bash_aliases
 fi
 
 # Load git bash completion
