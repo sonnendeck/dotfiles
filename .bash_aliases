@@ -2,7 +2,7 @@
 #     Allgemein     #
 #####################
 alias grep='grep --color=auto'
-alias man='man -P most'
+#alias man='man -P most'
 alias less='less -ir'
 
 # some more ls aliases
