@@ -6,8 +6,8 @@ export HISTCONTROL=ignoredups:ignorespace
 shopt -s histappend
 
 # Add bash aliases.
-if [ -f .bash_aliases ]; then
-    source .bash_aliases
+if [ -f .dotfiles/.bash_aliases ]; then
+    source .dotfiles/.bash_aliases
 fi
 
 # Load git bash completion
@@ -130,4 +130,6 @@ PATH=/usr/local/bin:${PATH}
 # export CLICOLOR=1;
 
 ### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
+if [[ command -v heroku >/dev/null 2>&1 ]]; then
+  export PATH="/usr/local/heroku/bin:$PATH"
+fi
