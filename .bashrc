@@ -130,6 +130,4 @@ PATH=/usr/local/bin:${PATH}
 # export CLICOLOR=1;
 
 ### Added by the Heroku Toolbelt
-if [[ command -v heroku >/dev/null 2>&1 ]]; then
-  export PATH="/usr/local/heroku/bin:$PATH"
-fi
+export PATH="/usr/local/heroku/bin:$PATH"
